@@ -1,0 +1,122 @@
+import '../models/campaign.dart';
+import 'i_campaign_service.dart';
+
+class MockCampaignService implements ICampaignService {
+  @override
+  Future<List<Campaign>> getCampaigns() async {
+    await Future.delayed(const Duration(seconds: 1));
+    return [
+      Campaign(
+        id: '1',
+        title: 'Support Sarah\'s Heart Surgery',
+        description: 'Sarah is a 7-year-old girl who needs urgent heart surgery.',
+        imageUrl: 'https://images.unsplash.com/photo-1584515933487-779824d29309?w=400&h=300&fit=crop',
+        targetAmount: 500000,
+        raisedAmount: 320000,
+        donorCount: 245,
+        endDate: DateTime(2026, 8, 30),
+        category: 'Medical',
+      ),
+      Campaign(
+        id: '2',
+        title: 'Mama Hope School Library',
+        description: 'Help us build a library for 200 underprivileged children.',
+        imageUrl: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=300&fit=crop',
+        targetAmount: 350000,
+        raisedAmount: 180000,
+        donorCount: 89,
+        endDate: DateTime(2026, 9, 15),
+        category: 'Education',
+      ),
+      Campaign(
+        id: '3',
+        title: 'Clean Water for Kibera',
+        description: 'Provide clean water access to 1,000 families in Kibera.',
+        imageUrl: 'https://images.unsplash.com/photo-1543168256-42435f4b0ec4?w=400&h=300&fit=crop',
+        targetAmount: 1000000,
+        raisedAmount: 750000,
+        donorCount: 420,
+        endDate: DateTime(2026, 7, 31),
+        category: 'Community',
+      ),
+      Campaign(
+        id: '4',
+        title: 'Startup Incubator Program',
+        description: 'Support young entrepreneurs with mentorship and seed funding.',
+        imageUrl: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=300&fit=crop',
+        targetAmount: 2500000,
+        raisedAmount: 1200000,
+        donorCount: 89,
+        endDate: DateTime(2026, 10, 1),
+        category: 'Business',
+      ),
+      Campaign(
+        id: '5',
+        title: 'Food Relief for Flood Victims',
+        description: 'Help us provide food and shelter to families affected by floods.',
+        imageUrl: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?w=400&h=300&fit=crop',
+        targetAmount: 800000,
+        raisedAmount: 450000,
+        donorCount: 156,
+        endDate: DateTime(2026, 7, 20),
+        category: 'Emergency',
+      ),
+    ];
+  }
+
+  @override
+  Future<Campaign> getCampaign({required String id}) async {
+    await Future.delayed(const Duration(milliseconds: 500));
+    final campaigns = await getCampaigns();
+    return campaigns.firstWhere((c) => c.id == id);
+  }
+
+  @override
+  Future<Map<String, dynamic>> initiateSTKPush({
+    required String campaignId,
+    required String phoneNumber,
+    required double amount,
+  }) async {
+    await Future.delayed(const Duration(seconds: 2));
+
+    if (amount >= 10 && phoneNumber.length >= 10) {
+      final checkoutId = 'CHECKOUT_${DateTime.now().millisecondsSinceEpoch}';
+      return {
+        'status': 'success',
+        'message': 'STK Push sent successfully',
+        'checkoutRequestId': checkoutId,
+        'CheckoutRequestID': checkoutId,
+        'phoneNumber': phoneNumber,
+        'amount': amount,
+      };
+    } else {
+      throw Exception('STK Push failed. Please check your phone number and amount.');
+    }
+  }
+
+  @override
+  Future<Map<String, dynamic>> checkSTKStatus({
+    required String checkoutRequestId,
+    required String donationId,
+  }) async {
+    await Future.delayed(const Duration(seconds: 1));
+
+    final isSuccess = donationId.hashCode % 3 != 0;
+
+    if (isSuccess) {
+      return {
+        'status': 'completed',
+        'message': 'Payment successful',
+        'resultCode': '0',
+        'resultDescription': 'Success. Request accepted',
+      };
+    } else {
+      return {
+        'status': 'failed',
+        'message': 'Payment failed',
+        'resultCode': '1037',
+        'resultDescription': 'Transaction cancelled by user',
+      };
+    }
+  }
+}
