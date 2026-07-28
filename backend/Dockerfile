@@ -41,6 +41,6 @@ RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available
 RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/conf-available/other-vhosts-access-log.conf
 
 EXPOSE 80
-
+RUN rm -f /var/www/html/storage/app/setup.lock
 # ✅ Run setup command (migrations + seeders) then start Apache
 CMD php artisan app:setup && apache2-foreground
