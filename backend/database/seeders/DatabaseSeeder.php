@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
         ]);
 
-        $admin = User::factory()->create([
+        $admin = User::create([
             'name' => 'Admin User',
             'email' => 'admin@supportsphere.co.ke',
             'phone' => '254700000000',
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         ]);
         $admin->assignRole('super_admin');
 
-        $fundraiser1 = User::factory()->create([
+        $fundraiser1 = User::create([
             'name' => 'James Ochieng',
             'email' => 'james@example.com',
             'phone' => '254712345678',
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         ]);
         $fundraiser1->assignRole('fundraiser');
 
-        $fundraiser2 = User::factory()->create([
+        $fundraiser2 = User::create([
             'name' => 'Mary Wanjiku',
             'email' => 'mary@example.com',
             'phone' => '254723456789',
@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
         ]);
         $fundraiser2->assignRole('fundraiser');
 
-        $fundraiser3 = User::factory()->create([
+        $fundraiser3 = User::create([
             'name' => 'Peter Kamau',
             'email' => 'peter@example.com',
             'phone' => '254734567890',
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
 
         $donors = [];
         for ($i = 1; $i <= 5; $i++) {
-            $donor = User::factory()->create([
+            $donor = create([
                 'name' => "Donor {$i}",
                 'email' => "donor{$i}@example.com",
                 'phone' => "2547456{$i}0001",
