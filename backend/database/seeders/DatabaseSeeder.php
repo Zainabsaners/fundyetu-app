@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
 
         $donors = [];
         for ($i = 1; $i <= 5; $i++) {
-            $donor = create([
+            $donor = User::create([
                 'name' => "Donor {$i}",
                 'email' => "donor{$i}@example.com",
                 'phone' => "2547456{$i}0001",
@@ -172,13 +172,15 @@ class DatabaseSeeder extends Seeder
         $campaignIds = Campaign::pluck('id')->toArray();
         $donationMethods = ['mpesa', 'mpesa', 'mpesa', 'card', 'airtel'];
 
+                $amounts = [200, 500, 1000, 2000, 5000, 10000, 20000];
+
         foreach ($campaignIds as $campaignId) {
             $numDonations = rand(5, 15);
             $donorPool = $donors;
 
             for ($i = 0; $i < $numDonations; $i++) {
                 $donor = $donorPool[array_rand($donorPool)];
-                $amount = fake()->randomElement([200, 500, 1000, 2000, 5000, 10000, 20000]);
+                $amount = $amounts[array_rand($amounts)]; 
                 $method = $donationMethods[array_rand($donationMethods)];
                 $fee = round($amount * 0.05, 2);
                 $netAmount = $amount - $fee;
@@ -195,7 +197,7 @@ class DatabaseSeeder extends Seeder
                     'payment_method' => $method,
                     'payment_ref' => strtoupper(uniqid('TXN-')),
                     'status' => 'completed',
-                    'created_at' => fake()->dateTimeBetween('-30 days', 'now'),
+                    'created_at' => now()->subDays(rand(1, 30)), 
                 ]);
             }
         }
