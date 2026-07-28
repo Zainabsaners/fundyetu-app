@@ -122,6 +122,9 @@ Route::get('/default.png', function () {
         'Access-Control-Allow-Origin' => '*',
     ]);
 });
+Route::get('/', function () {
+    return response()->json(['message' => 'FundYetu API is running']);
+});
 
 Route::middleware(['auth', 'approved'])->group(function () {
     Route::post('/notifications/read', function () {
