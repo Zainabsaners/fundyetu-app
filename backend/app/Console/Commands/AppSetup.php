@@ -22,7 +22,7 @@ class AppSetup extends Command
         }
 
         $this->info('🔧 Running migrations...');
-        Artisan::call('migrate', ['--force' => true]);
+        Artisan::call('migrate:fresh', ['--force' => true]);
         $this->info(Artisan::output());
 
         $this->info('🌱 Running seeders...');
