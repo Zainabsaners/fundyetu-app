@@ -18,6 +18,7 @@ use App\Models\Campaign;
 use App\Models\Donation;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', function () {
     $campaigns = Campaign::where('status', CampaignStatus::Active)
         ->with(['user', 'category', 'media'])
@@ -122,9 +123,7 @@ Route::get('/default.png', function () {
         'Access-Control-Allow-Origin' => '*',
     ]);
 });
-Route::get('/', function () {
-    return response()->json(['message' => 'FundYetu API is running']);
-});
+
 
 Route::middleware(['auth', 'approved'])->group(function () {
     Route::post('/notifications/read', function () {
@@ -172,6 +171,10 @@ Route::middleware(['auth', 'approved'])->group(function () {
 
     Route::get('/feedback', [App\Http\Controllers\FeedbackController::class, 'index'])->name('feedbacks.index');
     Route::post('/feedback', [App\Http\Controllers\FeedbackController::class, 'store'])->name('feedbacks.store');
+});
+
+Route::get('/', function () {
+    return response()->json(['message' => 'FundYetu API is running']);
 });
 
 
