@@ -8,6 +8,9 @@ class Campaign {
   final int donorCount;
   final DateTime endDate;
   final String category; // e.g., "Medical", "Education", "Community"
+  List<dynamic> media;
+  List<dynamic> comments;
+
 
   Campaign({
     required this.id,
@@ -19,6 +22,8 @@ class Campaign {
     required this.donorCount,
     required this.endDate,
     required this.category,
+    this.media = const [],
+    this.comments = const [],
   });
 
   // Progress percentage
@@ -65,5 +70,7 @@ class Campaign {
     donorCount: json['donor_count'] ?? 0,
     endDate: DateTime.parse(json['expiry_date']),
     category: json['category']['name'] ?? 'General',
+    media: json['media'] ??[],
+    comments: json['comments'] ?? [],
   );
 }

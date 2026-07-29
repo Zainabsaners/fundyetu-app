@@ -94,7 +94,7 @@ class _DonationFormScreenState extends State<DonationFormScreen> {
                         controller: _nameController,
                         decoration: const InputDecoration(
                           labelText: 'Full Name',
-                          hintText: 'Zainab Saners',
+                          hintText: 'Enter your Name',
                           prefixIcon: Icon(Icons.person),
                           border: OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(

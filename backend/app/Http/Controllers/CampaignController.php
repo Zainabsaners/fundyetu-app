@@ -356,7 +356,7 @@ public function apiShow(Campaign $campaign)
         return response()->json(['status' => 'error', 'message' => 'Campaign not found'], 404);
     }
 
-    $campaign->load(['user', 'category', 'media']);
+    $campaign->load(['user', 'category', 'media', 'comments.user']);
 
     return response()->json([
         'status' => 'success',
