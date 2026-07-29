@@ -1,7 +1,7 @@
 /// Environment configuration for the app
 class Environment {
   // Base URLs
-  static const String baseUrl = 'http://fundyetu.veritech.co.ke';
+  static const String baseUrl = 'https://fundyetu-api.onrender.com/api';
   // For local development:
   // static const String baseUrl = 'http://localhost:8000/api';
 
