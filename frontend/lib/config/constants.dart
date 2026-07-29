@@ -1,6 +1,6 @@
 class AppConstants {
-  static const String baseUrl = 'http://192.168.100.73:8000/api';
-  static const String rootUrl = 'http://192.168.100.73:8000'; 
+  static const String baseUrl = 'https://fundyetu-api.onrender.com/api';
+  static const String rootUrl = 'https://fundyetu-api.onrender.com'; 
 
   static const String defaultCampaignImage = '$rootUrl/default.png';
 }
