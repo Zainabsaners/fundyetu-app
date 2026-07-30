@@ -7,6 +7,7 @@ import '../widgets/shimmer_campaign_card.dart';
 //import 'campaign_detail_screen.dart';
 import 'donation_history_screen.dart';
 import '../widgets/fade_page_route.dart';
+import '../config/app_colors.dart';
 
 class CampaignListScreen extends StatefulWidget {
   const CampaignListScreen({super.key});
@@ -71,7 +72,8 @@ class _CampaignListScreenState extends State<CampaignListScreen> {
           'FundYetu',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: AppColors.navy,
+        foregroundColor: Colors.white,
         actions: [
           // Donation History Button
           IconButton(

@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryOrange, primary: AppColors.primaryOrange, secondary: Colors.orange,),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.navy, primary: AppColors.navy, secondary: AppColors.navy,),
         fontFamily: 'Roboto',
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
