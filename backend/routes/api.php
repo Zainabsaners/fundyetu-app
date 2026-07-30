@@ -6,6 +6,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\DonationController;
 
+
+Route::get('/ping', function () {
+    return response()->json(['status' => 'active', 'time' => now()]);
+});
+
 Route::post('payments/callback', [MpesaController::class, 'callback'])->name('api.mpesa.callback');
 Route::post('payments/mpesa/validate', [MpesaController::class, 'validate'])->name('api.mpesa.validate');
 Route::post('payments/result', [MpesaController::class, 'b2cResult'])->name('api.mpesa.b2c.result');

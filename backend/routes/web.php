@@ -176,9 +176,6 @@ Route::middleware(['auth', 'approved'])->group(function () {
 Route::get('/', function () {
     return response()->json(['message' => 'FundYetu API is running']);
 });
-Route::get('/ping', function () {
-    return response()->json(['status' => 'active', 'time' => now()]);
-});
 
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin|super_admin'])->group(function () {
