@@ -102,8 +102,8 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen>
         actions: [
           IconButton(
             icon: const Icon(Icons.share),
-            onPressed: () {
-              Share.share(
+            onPressed: () async {
+              await Share.share(
                 'Check out this fundraiser: ${campaign.title}\n\n'
                 'https://fundyetu-api.onrender.com/campaigns/${campaign.id}',
                 subject: campaign.title,
