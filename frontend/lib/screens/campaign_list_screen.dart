@@ -68,9 +68,18 @@ class _CampaignListScreenState extends State<CampaignListScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'FundYetu',
-          style: TextStyle(fontWeight: FontWeight.bold),
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/images/logo.png',
+              height: 30,
+            ),
+            const SizedBox(width: 8),
+            const Text(
+              'Support Sphere',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ],
         ),
         backgroundColor: AppColors.navy,
         foregroundColor: Colors.white,

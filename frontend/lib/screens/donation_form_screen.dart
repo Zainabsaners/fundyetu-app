@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/campaign_provider.dart';
 import 'donation_status_screen.dart';
+import '../config/app_colors.dart';
 
 class DonationFormScreen extends StatefulWidget {
   final String campaignId;
@@ -31,7 +32,7 @@ class _DonationFormScreenState extends State<DonationFormScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Donate'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: AppColors.navy,
       ),
       body: _buildBody(),
     );
@@ -51,7 +52,7 @@ class _DonationFormScreenState extends State<DonationFormScreen> {
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                    colors: [Colors.brown, Colors.brown],
+                    colors: [AppColors.navy, AppColors.navy],
                   ),
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -197,7 +198,7 @@ class _DonationFormScreenState extends State<DonationFormScreen> {
                   onPressed: _isProcessing ? null : _submitDonation,
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 16),
-                    backgroundColor: Colors.brown,
+                    backgroundColor: AppColors.primaryOrange,
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),

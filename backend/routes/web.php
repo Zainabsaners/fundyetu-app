@@ -174,7 +174,7 @@ Route::middleware(['auth', 'approved'])->group(function () {
 });
 
 Route::get('/', function () {
-    return response()->json(['message' => 'FundYetu API is running']);
+    return response()->json(['message' => 'Support Sphere API is running']);
 });
 
 

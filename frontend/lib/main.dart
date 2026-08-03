@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       ],
     
       child:MaterialApp(
-      title: 'Fundyetu',
+      title: 'Support Sphere',
       theme: ThemeData(
         // This is the theme of your application.
         //
