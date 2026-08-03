@@ -75,7 +75,7 @@ class CampaignCard extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                           decoration: BoxDecoration(
-                            color: AppColors.navy,
+                            color: AppColors.lightBlue,
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Text(

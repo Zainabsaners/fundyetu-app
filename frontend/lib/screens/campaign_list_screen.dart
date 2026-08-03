@@ -81,7 +81,7 @@ class _CampaignListScreenState extends State<CampaignListScreen> {
             ),
           ],
         ),
-        backgroundColor: AppColors.navy,
+        backgroundColor: AppColors.lightBlue,
         foregroundColor: Colors.white,
         actions: [
           // Donation History Button

@@ -100,16 +100,18 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen>
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: const Text('Campaign Details'),
-        backgroundColor: AppColors.navy,
+        backgroundColor: AppColors.lightBlue,
         foregroundColor: Colors.white,
         actions: [
           IconButton(
             icon: const Icon(Icons.share),
             onPressed: () {
-              Share.share(
-                'Check out this fundraiser: ${campaign.title}\n\n'
-                'https://fundyetu-api.onrender.com/campaigns/${campaign.id}',
-                subject: campaign.title,
+              SharePlus.instance.share(
+                ShareParams(
+                  text: 'Check out this fundraiser: ${campaign.title}\n\n'
+                      'https://fundyetu-api.onrender.com/campaigns/${campaign.id}',
+                  subject: campaign.title,
+                ),
               );
             },
           ),
@@ -176,7 +178,7 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen>
   Widget _buildWebStyleHeader(Campaign campaign) {
     return Container(
       padding: const EdgeInsets.all(16),
-      color: AppColors.navy,
+      color: AppColors.lightBlue,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -275,7 +277,9 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen>
               Expanded(
                 child: OutlinedButton(
                   onPressed: () {
-                    Share.share('Check out this fundraiser: ${campaign.title}');
+                    SharePlus.instance.share(
+                      ShareParams(text: 'Check out this fundraiser: ${campaign.title}'),
+                    );
                   },
                   style: OutlinedButton.styleFrom(
                     side: BorderSide(color: Colors.amber.shade700),
@@ -288,7 +292,7 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen>
           ),
           const SizedBox(height: 16),
 
-          // --- PROGRESS BAR & PERCENTAGE (Restored) ---
+          // --- PROGRESS BAR & PERCENTAGE ---
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -457,25 +461,28 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen>
                   ),
                 ),
                 const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      FadePageRoute(
-                        child: DonationFormScreen(
-                          campaignId: campaign.id,
-                          campaignTitle: campaign.title,
+                SizedBox(
+                  width: double.infinity, // Forces the button to stretch full width
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        FadePageRoute(
+                          child: DonationFormScreen(
+                            campaignId: campaign.id,
+                            campaignTitle: campaign.title,
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryOrange,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primaryOrange,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 12), 
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                    ),
+                    child: const Text('DONATE NOW', style: TextStyle(fontWeight: FontWeight.bold)),
                   ),
-                  child: const Text('DONATE NOW', style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
               ],
             ),

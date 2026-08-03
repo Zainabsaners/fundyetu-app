@@ -32,7 +32,7 @@ class _DonationFormScreenState extends State<DonationFormScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Donate'),
-        backgroundColor: AppColors.navy,
+        backgroundColor: const Color.fromARGB(255, 33, 86, 243),
       ),
       body: _buildBody(),
     );
@@ -52,7 +52,7 @@ class _DonationFormScreenState extends State<DonationFormScreen> {
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                    colors: [AppColors.navy, AppColors.navy],
+                    colors: [ Color.fromARGB(255, 33, 86, 243),  Color.fromARGB(255, 33, 86, 243)],
                   ),
                   borderRadius: BorderRadius.circular(16),
                 ),
