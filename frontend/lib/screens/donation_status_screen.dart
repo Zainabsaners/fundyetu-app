@@ -69,9 +69,14 @@ class _DonationStatusScreenState extends State<DonationStatusScreen> {
 
       if (status == 'completed' || status == 'success') {
         _timer?.cancel();
+        
+        // Personalized Thank You Message including donor name & campaign title
+        final donorDisplay = widget.donorName.isNotEmpty ? widget.donorName : 'Valued Donor';
+        final thankYouMessage = 'Thank you so much, $donorDisplay! Your generous contribution of KES ${widget.amount.toStringAsFixed(0)} towards "${widget.campaignTitle}" was successful. 🎉';
+
         _navigateToResult(
           success: true,
-          message: 'Your donation of KES ${widget.amount.toStringAsFixed(0)} was successful! 🎉',
+          message: thankYouMessage,
           transactionId: response['transactionId'],
         );
       } else if (status == 'failed' || status == 'cancelled') {
@@ -117,7 +122,8 @@ class _DonationStatusScreenState extends State<DonationStatusScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Processing Payment'),
-        backgroundColor: AppColors.lightBlue,
+        backgroundColor: AppColors.lightBlue, // Uses your brand blue color theme
+        foregroundColor: Colors.white,       // Ensures text/icons are clear and visible
         automaticallyImplyLeading: false,
       ),
       body: Padding(
@@ -130,7 +136,7 @@ class _DonationStatusScreenState extends State<DonationStatusScreen> {
               width: 80,
               child: CircularProgressIndicator(
                 strokeWidth: 4,
-                color: Colors.teal,
+                color: AppColors.primaryOrange, // Updated to match your theme accent
               ),
             ),
             const SizedBox(height: 32),
@@ -157,7 +163,7 @@ class _DonationStatusScreenState extends State<DonationStatusScreen> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.teal[50],
+                color: Colors.blue.shade50,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Column(
@@ -172,7 +178,7 @@ class _DonationStatusScreenState extends State<DonationStatusScreen> {
                     style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.teal,
+                      color: AppColors.lightBlue,
                     ),
                   ),
                 ],
@@ -192,7 +198,7 @@ class _DonationStatusScreenState extends State<DonationStatusScreen> {
                 _timer?.cancel();
                 Navigator.pop(context);
               },
-              child: const Text('Cancel Payment'),
+              child: const Text('Cancel Payment', style: TextStyle(color: AppColors.primaryOrange)),
             ),
           ],
         ),
