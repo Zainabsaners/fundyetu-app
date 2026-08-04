@@ -179,8 +179,8 @@ class _DonationFormScreenState extends State<DonationFormScreen> {
                             return 'Please enter an amount';
                           }
                           final amount = double.tryParse(value);
-                          if (amount == null || amount < 1) {
-                            return 'Please enter a valid amount (minimum KES 1)';
+                          if (amount == null || amount < 10) {
+                            return 'Please enter a valid amount (minimum KES 10)';
                           }
                           return null;
                         },
