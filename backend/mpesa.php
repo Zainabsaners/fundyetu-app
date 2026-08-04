@@ -67,7 +67,7 @@
         'PartyA' => $phone,
         'PartyB' => '5633294',
         'PhoneNumber' => $phone,
-        'CallBackURL' => 'https://veritech.co.ke/tes/tes/confirmation.php?pass_token=' . $key,
+        'CallBackURL' => 'https://fundyetu-api.onrender.com/api/payments/callback',
         'AccountReference' => 'Fuel',
         'TransactionDesc' => 'Fuel',
     ];
