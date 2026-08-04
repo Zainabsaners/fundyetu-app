@@ -2,7 +2,7 @@
 
     $validator = Validator::make($request->all(), [
         'phone' => 'required',
-        'amount' => 'required|numeric|min:1',
+        'amount' => 'required|numeric|min:10',
         'station_id' => 'required', 
     ]);
 
