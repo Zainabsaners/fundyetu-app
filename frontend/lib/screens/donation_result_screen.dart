@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../config/app_colors.dart';
 
 class DonationResultScreen extends StatelessWidget {
   final bool isSuccess;
@@ -19,7 +20,7 @@ class DonationResultScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Payment Result'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: AppColors.lightBlue,
         automaticallyImplyLeading: false,
       ),
       body: Padding(

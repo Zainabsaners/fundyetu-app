@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/campaign_provider.dart';
 import 'donation_result_screen.dart';
+import '../config/app_colors.dart';
 
 class DonationStatusScreen extends StatefulWidget {
   final String checkoutRequestId;
@@ -116,7 +117,7 @@ class _DonationStatusScreenState extends State<DonationStatusScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Processing Payment'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: AppColors.lightBlue,
         automaticallyImplyLeading: false,
       ),
       body: Padding(
